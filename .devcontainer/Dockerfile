@@ -10,7 +10,11 @@ RUN if [ "${REINSTALL_CMAKE_VERSION_FROM_SOURCE}" != "none" ]; then \
     fi \
     && rm -f /tmp/reinstall-cmake.sh 
 
-RUN mkdir -p /workspace
+RUN mkdir -p /workspace && \
+    useradd -rm -d /home/logan -s /bin/bash  -u 1777 logan
+
+USER logan
+
 # [Optional] Uncomment this section to install additional vcpkg ports.
 # RUN su vscode -c "${VCPKG_ROOT}/vcpkg install <your-port-name-here>"
 
