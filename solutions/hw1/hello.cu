@@ -3,12 +3,20 @@
 __global__ void hello()
 {
 
-  printf("Hello from block: %u, thread: %u\n", blockidx.x, threadidx.x);
+  printf("Hello from block: %u, thread: %u\n", blockIdx.x, threadIdx.x);
 }
 
 int main()
 {
+  printf("GoGo\n");
+  hello<<<10, 10>>>();
+  // cudaDeviceSynchronize();
+  cudaError_t cudaerr = cudaDeviceSynchronize();
+  printf("Done");
 
-  hello<<<2, 2>>>();
-  cudaDeviceSynchronize();
+  if (cudaerr != cudaSuccess)
+  {
+    printf("kernel launch failed with error \"%s\".\n",
+           cudaGetErrorString(cudaerr));
+  }
 }
