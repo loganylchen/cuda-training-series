@@ -7,8 +7,10 @@
 	},
 	"features": {
 		"ghcr.io/devcontainers/features/nvidia-cuda:1": {},
+		"ghcr.io/nils-geistmann/devcontainers-features/zsh:0": {},
 	},
 	"workspaceMount": "source=/home/logan/dev/cuda-training-series,target=/workspace,type=bind,consistency=cached",
+	"workspaceFolder": "/workspace",
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -26,5 +28,5 @@
 	// Configure tool-specific properties.
 	// "customizations": {},
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
-	// "remoteUser": "root"
+	"remoteUser": "logan"
 }
